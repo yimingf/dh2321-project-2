@@ -114,12 +114,14 @@ var dm = new Datamap({
   }
 });
 
-function loadData() {
+function reloadData() {
   var questionValue = document.getElementById("question").value;
-  if (questionValue == 0) {
+  var timeValue = document.getElementById("time").value;
+  if (questionValue == 0 || timeValue == 0) {
     return;
   } else {
     questionValue--;
+    timeValue--;
   }
 
   var dataset = {};
@@ -127,7 +129,7 @@ function loadData() {
   // colors should be uniq for every value.
   // For this purpose we create palette(using min/max series-value)
   var onlyValues = series.map(function(obj){
-    return obj[1][questionValue];
+    return obj[1][questionValue*5+timeValue];
   });
   var minValue = Math.min.apply(null, onlyValues),
     maxValue = Math.max.apply(null, onlyValues);
@@ -140,7 +142,7 @@ function loadData() {
   series.forEach(function(item){ //
     // item example value ["USA", 70]
     var iso = item[0],
-      value = item[1][questionValue];
+      value = item[1][questionValue*5+timeValue];
     dataset[iso] = { numberOfThings: value, fillColor: paletteScale(value) };
   });
   // render map
@@ -148,15 +150,24 @@ function loadData() {
 }
 
 </script>
-<select onchange="loadData()" id="question">
+<select onchange="reloadData()" id="question">
   <option value="0">select questions</option>
   <option value="1">V45 - when jobs are scarce, men should have more right to a job than women</option>
   <option value="2">V47 - if a woman earns more money than her husband, it's almost certain to cause problems</option>
+  <option value="3">V48 - having a job is the best way for a woman to be an independent person</option>
+  <option value="4">V50 - when a mother works for pay, the children suffer</option>
+  <option value="5">V51 - men make better business executives than women do</option>
+  <option value="6">V52 - a university education is more important for a boy than for a girl</option>
+  <option value="7">V53 - men make better political leaders than women do</option>
+  <option value="8">V139 - democracy: women have the same rights as men</option>
 </select>
-<select onchange="loadData()" id="time">
+<select onchange="reloadData()" id="time">
   <option value="0">select time duration</option>
-  <option value="1">V45 - when jobs are scarce, men should have more right to a job than women</option>
-  <option value="2">V47 - if a woman earns more money than her husband, it's almost certain to cause problems</option>
+  <option value="1">1990-1994</option>
+  <option value="2">1995-1999</option>
+  <option value="3">2000-2004</option>
+  <option value="4">2005-2009</option>
+  <option value="5">2010-2014</option>
 </select>
 </body>
 </html>
