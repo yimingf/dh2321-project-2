@@ -163,7 +163,7 @@ function reloadBar() {
     maxValue = Math.max.apply(null, onlyValues);
   var paletteScale = d3.scale.linear()
     .domain([minValue,maxValue])
-    .range(["#EFEFFF","#02386F"]); // blue color
+    .range(["#ffeff7","#56002b"]); // blue color
   // fill dataset in appropriate format
   series_bar.forEach(function(item){ //
     // item example value ["USA", 70]
@@ -180,7 +180,7 @@ function reloadBar() {
   <option value="0">select questions</option>
   <option value="1">V11 - population's state of health (subjective)</option>
   <option value="2">gapminder - infant mortality</option>
-  <option value="3">gapminder - total health spending</option>
+  <option value="3">gapminder - total health spending (%gdp)</option>
   <option value="4">gapminder - lung cancer, deaths per 100k men</option>
   <option value="5">gapminder - people living with HIV</option>
   <option value="6">gapminder - sugar consumption</option>
