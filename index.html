@@ -12,6 +12,15 @@
 </head>
 <body>
 <h1>kth dh2321 ivis17 project 2, by yiming fan</h1>
+<h4>19/2/2016</h4>
+<h2>introduction</h2>
+<h3>this project visualizes the sexual equality progresses and health / sanitation status of countries all over the world.</h3>
+<h2>how to play</h2>
+<h3>select different questions, then select time periods w.r.t. scores to the questions.</h3>
+<h2>how data are visualized?</h2>
+<h3>every country has a score to the quetion at a certain time period, which is mapped to a certain color. usually a 'time period' contains data of the past five years. the darker, the better the country does in this aspect.</h3>
+<h3>due to time limit only 30 countries are sampled on the map.</h3>
+<h2>sexual equality status over 30 countries</h2>
 <div id="container_foo" style="border:1px dotted blue; width: 700px; height: 475px; position: relative;"></div>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
@@ -103,6 +112,7 @@ function reloadData() {
   <option value="4">2005-2009</option>
   <option value="5">2010-2014</option>
 </select>
+<h2>population health / sanitation status over 30 countries</h2>
 <div id="container_bar" style="border:1px dotted blue; width: 700px; height: 475px; position: relative;"></div>
 <script>
 
@@ -158,7 +168,7 @@ function reloadBar() {
   series_bar.forEach(function(item){ //
     // item example value ["USA", 70]
     var iso = item[0],
-      value = item[1][questionValue*5+timeValue];
+      value = item[1][questionValue*7+timeValue];
     dataset[iso] = { numberOfThings: value, fillColor: paletteScale(value) };
   });
   // render map
